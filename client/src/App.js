@@ -1,30 +1,41 @@
-import "./App.css";
-import Post from "./Post";
-import Header from "./Header";
-import { Route, Routes } from "react-router-dom";
-import Layout from "./Layout";
-import IndexPage from "./pages/IndexPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-// import { UserContextProvider } from "./UserContext";
-import CreatePost from "./pages/CreatePost";
-import PostPage from "./pages/PostPage";
-import EditPost from "./pages/EditPost";
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/home';
+import About from './components/About';
+import NoteState from './context/notesState';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Alert from './components/Alert';
 
 function App() {
+  
   return (
-    // <UserContextProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<IndexPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/create" element={<CreatePost />} />
-          <Route path="/post/:id" element={<PostPage />} />
-          <Route path="/edit/:id" element={<EditPost />} />
-        </Route>
-      </Routes>
-    // </UserContextProvider>
+    <>
+    <NoteState>
+      <Router>
+        <Navbar />
+        <Alert/>
+          <div className="container">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/about">
+                <About />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup/>
+              </Route>
+            </Switch>
+          </div>
+      </Router>
+    </NoteState>
+    
+    </>
   );
 }
 
