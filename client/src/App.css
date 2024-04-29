@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.about{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pic{
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+.pic{
+  display: flex;
+  flex-grow: 3;
+  margin-right: 5px;
+  flex-shrink: 2;
+  border-radius: 8px;
+}
+}

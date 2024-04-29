@@ -1,10 +1,16 @@
+import React from 'react'
 import Notes from './Notes'
 
-const Home = (props) => {
+
+const Home = () => {
+ 
   return (
-    <div className='container my-3'>
-      <Notes/>
+    <>
+    <div className="container">
+    <Notes />
     </div>
+    
+    </>
   )
 }
 

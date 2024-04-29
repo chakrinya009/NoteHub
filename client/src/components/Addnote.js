@@ -1,42 +1,45 @@
-import React, {useContext, useState} from 'react'
-import noteContext from "../context/noteContext"
+import React, { useContext, useState } from 'react'
+import noteContext from '../context/notes/NoteContext'
+import modeContext from '../context/notes/ModeContext';
 
-const AddNote = () => {
-    const context = useContext(noteContext);
-    const {addNote} = context;
+function Addnote() {
+  let content2= useContext(modeContext);
+  let {mode}=content2;
+  const content = useContext(noteContext);
+  let { addnote } = content;
+  const [note, setNote] = useState({ title: "", discription: "", tag: "" });
+  let changing = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  }
+  let submitting = (e) => {
+    e.preventDefault();
+    addnote(note.title,note.discription,note.tag);
+    setNote({ title: "", discription: "", tag: "" });
+  }
 
-    const [note, setNote] = useState({title: "", description: "", tag: ""})
+  return (
 
-    const handleClick = (e)=>{
-        e.preventDefault();
-        addNote(note.title, note.description, note.tag);
-        setNote({title: "", description: "", tag: ""})
-    }
+    <div className="container" style={{color : mode==='dark'?'white':'black'}}>
+      <h2>Add a note</h2>
+      <form className='my-3'>
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">Title</label>
+          <input type="text" className="form-control" id="title" name='title' aria-describedby="emailHelp" onChange={changing} placeholder="min length=3" value={note.title} />
 
-    const onChange = (e)=>{
-        setNote({...note, [e.target.name]: e.target.value})
-    }
-    return (
-        <div className="container my-3">
-            <h2>Add a Note</h2>
-            <form className="my-3">
-                <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" value={note.title} placeholder='minimum of 5 characters' onChange={onChange} minLength={5} maxLength={200} required /> 
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="description" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="description" name="description" value={note.description} placeholder='minimum of 5 characters' onChange={onChange} minLength={5} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="tag" className="form-label">Tag</label>
-                    <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={5} required />
-                </div>
-               
-                <button disabled={note.title.length<5 || note.description.length<5 || note.title.length>200} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
-            </form>
         </div>
-    )
+        <div className="mb-3">
+          <label htmlFor="discription" className="form-label">Discription</label>
+          <input type="text" className="form-control" id="discription" name='discription' onChange={changing}  placeholder="min length=5" value={note.discription}/>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="tag">Tag</label>
+          <input type="text" className="form-control" id="tag" name='tag'  onChange={changing} value={note.tag}/>
+        </div>
+        <button disabled={note.title.length<3 || note.discription.length<5} type="submit" className="btn btn-primary " onClick={submitting}>Add note</button>
+      </form>
+    </div>
+
+  )
 }
 
-export default AddNote
+export default Addnote

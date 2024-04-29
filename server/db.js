@@ -1,10 +1,16 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require('mongoose');
 
-const connectToMongo = () => {
-  mongoose.connect(process.env.mongoUrl, () => {
-    console.log("connected to db successfully");
-  });
-};
 
-module.exports = connectToMongo;
+let mongooseURL = `mongodb+srv://chakrinya:chakrinya009@nodeprojects.giz5b0e.mongodb.net/notes?retryWrites=true&w=majority`;
+
+mongoose.set('strictQuery', false);   //i added see what it means
+
+const connectToMongoose =()=>{
+    mongoose.connect(mongooseURL,()=>{
+        console.log("Connected to mongoose");
+    })
+}
+
+
+
+module.exports = connectToMongoose;

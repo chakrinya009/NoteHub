@@ -1,18 +1,19 @@
-import React , { useContext } from 'react';
-import noteContext from '../context/noteContext';
+import React from 'react'
+import alertContext from '../context/notes/AlertContext';
+import { useContext } from 'react';
 
-const Alert = () => {
-    const context = useContext(noteContext);
-    const {alert} = context ;
+const  Alert=()=>{
+    let context=useContext(alertContext);
+    let {alert}=context;
     return (
-        <div>
-            {
-                alert!==null && 
-                <div className={`alert alert-${alert.type}`} role="alert">
-                    {alert.msg}
-                </div>
-            }
+        
+        <div style={{height:'75px'}}>
+        {alert && <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
+            <strong>{alert.type}</strong><div>{alert.msg}</div>
+        </div>}
         </div>
+        
     )
 }
+
 export default Alert
