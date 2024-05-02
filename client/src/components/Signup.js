@@ -5,7 +5,8 @@ import alertContext from "../context/notes/AlertContext";
 import modeContext from "../context/notes/ModeContext";
 
 const Signup = () => {
-  let localhost = "http://localhost:8000";
+  // let localhost = "http://localhost:8000";
+  let localhost = "https://note-hub-zwly.vercel.app";
   // let localhost = "https://server-dtl61rb7y-chakrinya009s-projects.vercel.app";
   let content2 = useContext(modeContext);
   let { mode } = content2;
