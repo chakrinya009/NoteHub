@@ -1,10 +1,11 @@
 const connectToMongoose = require('./db');
 const express = require('express');
 const cors = require('cors')
-connectToMongoose();
-const app = express()
-const port = process.env.PORT ||  5000  //changes the port so because react  also run at 3000
 
+const app = express()
+require("dotenv").config();
+const port = process.env.PORT ||  5000  //changes the port so because react  also run at 3000
+connectToMongoose(process.env.MONGO_URI);
 app.use(express.json());
 app.use(cors());
 

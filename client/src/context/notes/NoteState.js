@@ -9,7 +9,8 @@ const NoteState = (props) => {
   const [notes, setNote] = useState(notesInitial);
 
   
-  let localhost = "http://localhost:5000";
+  let localhost = "http://localhost:8000";
+  // let localhost = "https://server-dtl61rb7y-chakrinya009s-projects.vercel.app";
 
   //a fecth function to get the initial notes
   let getnotes = async () => {

@@ -7,7 +7,8 @@ import modeContext from '../context/notes/ModeContext';
 
 const Login = () => {
     
-    let localhost = "http://localhost:5000";
+    let localhost = "http://localhost:8000";
+//    let localhost ="https://server-dtl61rb7y-chakrinya009s-projects.vercel.app";
     let content2 = useContext(modeContext);
     let { mode } = content2;
     let context = useContext(alertContext);

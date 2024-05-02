@@ -6,7 +6,6 @@ const fetchuser = (req, res, next) => {
 
 
     //sometimes the token is invaild so we use try catch
-    
     try {
         //when sending a header file to this middleware it should be named auth-token
         //from that header we will get token
